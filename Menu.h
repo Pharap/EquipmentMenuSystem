@@ -15,19 +15,23 @@ struct Menu
 {
   const char * Title;
   const MenuOption * Options;
-  const uint8_t OptionsLength;
+  uint8_t OptionsLength;
 };
 
 void DrawMenu(Arduboy2 & arduboy, const Menu & menu, const uint8_t & selected)
 {
-  arduboy.println(AsFlashStringHelper(pgm_read_word(&(menu.Title))));
+  arduboy.println(AsFlashStringHelper(menu.Title));
   
-  const uint8_t count = pgm_read_byte(&(menu.OptionsLength));
-  const MenuOption * const entries = reinterpret_cast<const MenuOption *>(pgm_read_word(&(menu.Options)));
-  
-  for (uint8_t i = 0; i < count; ++i)
+  for (uint8_t i = 0; i < menu.OptionsLength; ++i)
   {
 	arduboy.print((i == selected) ? F("> ") : F("  "));
-    arduboy.println(AsFlashStringHelper(pgm_read_word(&entries[i])));
+    arduboy.println(AsFlashStringHelper(pgm_read_word(&menu.Options[i])));
   }
+}
+
+inline void DrawProgmemMenu(Arduboy2 & arduboy, const Menu & progmemMenu, const uint8_t & selected)
+{
+  Menu menu;
+  memcpy_P(&menu, &progmemMenu, sizeof(Menu));
+  DrawMenu(arduboy, menu, selected);
 }

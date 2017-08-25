@@ -32,6 +32,6 @@ void loop()
   }
 
   arduboy.clear();
-  DrawMenu(arduboy, EquipmentMenu, menuIndex);
+  DrawProgmemMenu(arduboy, EquipmentMenu, menuIndex);
   arduboy.display();
 }
