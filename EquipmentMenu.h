@@ -6,13 +6,13 @@
 
 // Options
 const char EquipmentMenuOptionTable[] PROGMEM = "Table";
-void GivePlayerTable(Player * player) { /*give the player a table*/ }
+void GivePlayerTable(Player & player) { /*give the player a table*/ }
 
 const char EquipmentMenuOptionOrnament[] PROGMEM = "Ornament";
-void GivePlayerOrnament(Player * player) { /*give the player an ornament*/ }
+void GivePlayerOrnament(Player & player) { /*give the player an ornament*/ }
 
 const char EquipmentMenuOptionLaptop[] PROGMEM = "Laptop";
-void GivePlayerLaptop(Player * player) { /*give the player a laptop?*/ }
+void GivePlayerLaptop(Player & player) { /*give the player a laptop?*/ }
 
 // Menu
 const char EquipmentMenuTitle[] PROGMEM = "BUY EQUIPMENT";
