@@ -30,6 +30,11 @@ void loop()
   	if(menuIndex > EquipmentMenuMinIndex)
   		--menuIndex;
   }
+  
+  if(arduboy.justPressed(A_BUTTON))
+  {
+	ApplyProgmemMenuAction(player, EquipmentMenu, menuIndex);
+  }
 
   arduboy.clear();
   DrawProgmemMenu(arduboy, EquipmentMenu, menuIndex);
