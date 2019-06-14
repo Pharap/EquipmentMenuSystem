@@ -33,6 +33,7 @@ inline void DrawProgmemMenu(Arduboy2 & arduboy, const Menu & progmemMenu, uint8_
 {
 	Menu menu;
 	memcpy_P(&menu, &progmemMenu, sizeof(Menu));
+
 	DrawMenu(arduboy, menu, selected);
 }
 
@@ -40,8 +41,10 @@ inline bool ApplyMenuAction(Player & player, const Menu & menu, uint8_t selected
 {
 	if(selected > menu.OptionsLength)
 		return false;
+
 	MenuAction action = static_cast<MenuAction>(pgm_read_ptr(&menu.Options[selected].Action));
 	action(player);
+
 	return true;
 }
 
@@ -49,5 +52,6 @@ inline bool ApplyProgmemMenuAction(Player & player, const Menu & progmemMenu, ui
 {
 	Menu menu;
 	memcpy_P(&menu, &progmemMenu, sizeof(Menu));
+
 	return ApplyMenuAction(player, menu, selected);
 }
