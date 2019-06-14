@@ -25,7 +25,7 @@ inline void DrawMenu(Arduboy2 & arduboy, const Menu & menu, uint8_t selected)
 	for (uint8_t i = 0; i < menu.OptionsLength; ++i)
 	{
 		arduboy.print((i == selected) ? F("> ") : F("  "));
-		arduboy.println(AsFlashStringHelper(pgm_read_word(&menu.Options[i].Text)));
+		arduboy.println(AsFlashStringHelper(pgm_read_ptr(&menu.Options[i].Text)));
 	}
 }
 
@@ -40,7 +40,7 @@ inline bool ApplyMenuAction(Player & player, const Menu & menu, uint8_t selected
 {
 	if(selected > menu.OptionsLength)
 		return false;
-	MenuAction action = reinterpret_cast<MenuAction>(pgm_read_word(&menu.Options[selected].Action));
+	MenuAction action = reinterpret_cast<MenuAction>(pgm_read_ptr(&menu.Options[selected].Action));
 	action(player);
 	return true;
 }
