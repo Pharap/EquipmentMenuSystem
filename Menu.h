@@ -18,7 +18,7 @@ struct Menu
 	uint8_t OptionsLength;
 };
 
-void DrawMenu(Arduboy2 & arduboy, const Menu & menu, const uint8_t & selected)
+inline void DrawMenu(Arduboy2 & arduboy, const Menu & menu, const uint8_t & selected)
 {
 	arduboy.println(AsFlashStringHelper(menu.Title));
 
@@ -36,7 +36,7 @@ inline void DrawProgmemMenu(Arduboy2 & arduboy, const Menu & progmemMenu, const 
 	DrawMenu(arduboy, menu, selected);
 }
 
-bool ApplyMenuAction(Player & player, const Menu & menu, const uint8_t & selected)
+inline bool ApplyMenuAction(Player & player, const Menu & menu, const uint8_t & selected)
 {
 	if(selected > menu.OptionsLength)
 		return false;
