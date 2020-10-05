@@ -42,7 +42,7 @@ inline bool ApplyMenuAction(Player & player, const Menu & menu, uint8_t selected
 	if(selected > menu.OptionsLength)
 		return false;
 
-	MenuAction action = static_cast<MenuAction>(pgm_read_ptr(&menu.Options[selected].Action));
+	MenuAction action = reinterpret_cast<MenuAction>(pgm_read_ptr(&menu.Options[selected].Action));
 	action(player);
 
 	return true;
