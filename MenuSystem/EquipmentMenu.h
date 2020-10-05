@@ -28,9 +28,9 @@ constexpr Menu EquipmentMenu PROGMEM =
 {
 	EquipmentMenuTitle,
 	EquipmentMenuOptions,
-	ArrayLength(EquipmentMenuOptions)
+	getSize(EquipmentMenuOptions)
 };
 
-constexpr uint8_t EquipmentMenuLength =  ArrayLength(EquipmentMenuOptions);
+constexpr uint8_t EquipmentMenuLength =  getSize(EquipmentMenuOptions);
 constexpr uint8_t EquipmentMenuMinIndex =  0;
 constexpr uint8_t EquipmentMenuMaxIndex =  EquipmentMenuLength - 1;

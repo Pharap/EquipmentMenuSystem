@@ -20,12 +20,12 @@ struct Menu
 
 inline void DrawMenu(Arduboy2 & arduboy, const Menu & menu, uint8_t selected)
 {
-	arduboy.println(AsFlashStringHelper(menu.Title));
+	arduboy.println(asFlashStringHelper(menu.Title));
 
 	for (uint8_t i = 0; i < menu.OptionsLength; ++i)
 	{
 		arduboy.print((i == selected) ? F("> ") : F("  "));
-		arduboy.println(AsFlashStringHelper(pgm_read_ptr(&menu.Options[i].Text)));
+		arduboy.println(readFlashStringPointer(&menu.Options[i].Text));
 	}
 }
 
